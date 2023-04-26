@@ -1,5 +1,4 @@
 #include<iostream>
-#include <cstring>
 using namespace std;
 
 struct book
@@ -18,6 +17,17 @@ void sort_byName(book arr[], int size = 5) {
 			if (strcmp(arr[j].name, arr[j + 1].name) > 0) {
 				book temp = arr[j];
 				arr[j] = arr[j + 1]; 
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
+void sort_byPublisher(book arr[], int size = 5) {
+	for (int i = 0; i < size - 1; i++) {
+		for (int j = 0; j < size - i - 1; j++) {
+			if (strcmp(arr[j].publisher, arr[j + 1].publisher) > 0) {
+				book temp = arr[j];
+				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
 			}
 		}
@@ -102,6 +112,11 @@ int main() {
 	//■ Сортировка массива по названию книг;
 	sort_byName(arr, 5);
 	cout << endl << "<---Сортировка массива по названию книг--->\n";
+	print(arr);
+
+	//■ Сортировка массива по издательству
+	sort_byPublisher(arr, 5);
+	cout << endl << "<---Сортировка массива по издательству--->\n";
 	print(arr);
 	return(0);
 }
